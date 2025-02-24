@@ -1,5 +1,5 @@
 name: "Bug Report"
-description: "Report a bug with details for debugging"
+description: "Report a bug with details for debugging test"
 title: "[BUG] "
 labels: ["bug"]
 projects: ["WeirdBrains/your-project"] # Replace with your actual GitHub project ID
