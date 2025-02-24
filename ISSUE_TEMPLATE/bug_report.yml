@@ -1,14 +1,18 @@
-name: Bug Report
-description: Report an issue with details for troubleshooting
+name: "Bug Report"
+description: "Report a bug with details for debugging"
 title: "[BUG] "
 labels: ["bug"]
-projects: ["WeirdBrains/your-project"]
+projects: ["WeirdBrains/your-project"] # Replace with your actual GitHub project ID
 body:
+  - type: markdown
+    attributes:
+      value: "### Please complete all required fields before submitting."
+
   - type: input
     id: title
     attributes:
-      label: "Title"
-      placeholder: "Short description of the bug"
+      label: "Bug Title"
+      placeholder: "Short summary of the bug"
     validations:
       required: true
 
@@ -17,9 +21,9 @@ body:
     attributes:
       label: "Priority"
       options:
-        - High
-        - Medium
-        - Low
+        - "High"
+        - "Medium"
+        - "Low"
     validations:
       required: true
 
@@ -28,14 +32,9 @@ body:
     attributes:
       label: "Complexity"
       options:
-        - 1
-        - 2
-        - 3
-        - 4
-        - 5
-        - 6
-        - 7
-        - 8
+        - "High"
+        - "Medium"
+        - "Low"
     validations:
       required: true
 
@@ -43,7 +42,6 @@ body:
     id: repository
     attributes:
       label: "Repository"
-      description: "Which repository is this issue related to?"
       placeholder: "e.g., WeirdBrains/project-name"
     validations:
       required: true
@@ -52,7 +50,6 @@ body:
     id: milestone
     attributes:
       label: "Milestone"
-      description: "Specify the milestone"
       placeholder: "e.g., v1.0"
     validations:
       required: true
@@ -64,3 +61,4 @@ body:
       placeholder: "e.g., @username"
     validations:
       required: false
+
