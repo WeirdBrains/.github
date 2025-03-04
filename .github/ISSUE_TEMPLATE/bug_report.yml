@@ -8,6 +8,13 @@ body:
     attributes:
       value: "### Please complete all required fields before submitting."
 
+  - type: textarea
+    id: description
+    attributes:
+      label: "Description"
+      description: "Provide a detailed description of the bug, including steps to reproduce, expected behavior, and actual behavior."
+      placeholder: "Describe the issue here..."
+
   - type: dropdown
     id: priority
     attributes:
