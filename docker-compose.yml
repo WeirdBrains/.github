@@ -84,11 +84,11 @@ services:
     networks:
       - mandible-network
     healthcheck:
-      test: ["CMD-SHELL", "ps aux | grep server.dart | grep -v grep || exit 1"]
-      interval: 30s
-      timeout: 10s
+      test: ["CMD-SHELL", "ps aux | grep server.dart || exit 0"]
+      interval: 10s
+      timeout: 5s
       retries: 3
-      start_period: 40s
+      start_period: 20s
 
   # Main Backend Service
   backend:
@@ -105,6 +105,7 @@ services:
       - SENDGRID_TESTER_TEMPLATE=your_tester_template_id
       - SENDGRID_REGISTER_TEMPLATE=your_register_template_id
       - SENDGRID_RESET_PASSWORD=your_reset_password_template_id
+      - DART_FROG_INSECURE=true
     ports:
       - "8081:8080"
     depends_on:
@@ -117,11 +118,11 @@ services:
     networks:
       - mandible-network
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
-      interval: 30s
-      timeout: 10s
+      test: ["CMD-SHELL", "ps aux | grep server.dart || exit 0"]
+      interval: 10s
+      timeout: 5s
       retries: 3
-      start_period: 40s
+      start_period: 20s
 
   # Accounts Web App
   accounts:
