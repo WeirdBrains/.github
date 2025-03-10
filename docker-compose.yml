@@ -12,12 +12,13 @@ services:
       - "5432:5432"
     volumes:
       - sso-db-data:/var/lib/postgresql/data
-      - ../sso_backend/ddl.sql:/docker-entrypoint-initdb.d/init.sql
+      - ../sso_backend/ddl.sql:/docker-entrypoint-initdb.d/01-init.sql
+      - ./init-scripts:/docker-entrypoint-initdb.d/02-custom-init
     networks:
       - mandible-network
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 10s
+      interval: 5s
       timeout: 5s
       retries: 5
 
