@@ -1,0 +1,18 @@
+services:
+  sso_backend:
+    image: sso-backend
+    container_name: sso-backend
+    build:
+      context: ${PATH_TO_SSO_BACKEND}
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      DB_PORT: ${SSO_DB_PORT}
+      DB_HOST: ${SSO_DB_HOST}
+      DB_NAME: ${SSO_DB_NAME}
+      DB_USER: ${SSO_DB_USER}
+      DB_PASSWORD: ${SSO_DB_PASSWORD}
+    env_file:
+      - .env
