@@ -14,12 +14,15 @@ services:
       DB_NAME: ${SSO_DB_NAME}
       DB_USER: ${SSO_DB_USER}
       DB_PASSWORD: ${SSO_DB_PASSWORD}
-      BASE_URL: "http://sso-backend:8080"
-      ALLOW_ORIGINS: "http://localhost:3000"
+      BASE_URL: "http://localhost:8080"
+      ALLOW_ORIGINS: "*"
+      FRONTEND_URL: "http://localhost:3000"
+      CORS_ALLOW_CREDENTIALS: "true"
+      CORS_ALLOW_METHODS: "GET,POST,PUT,DELETE,OPTIONS"
+      CORS_ALLOW_HEADERS: "Content-Type,Authorization"
     env_file:
       - .env
-    networks:
-      - app-network
+
 
   accounts:
     image: accounts
@@ -31,16 +34,9 @@ services:
     ports:
       - "3000:80"
     environment:
-      API_URL: "http://sso-backend:8080"
+      API_URL: "http://localhost:8080"
       FRONTEND_URL: "http://localhost:3000"
     depends_on:
       - sso_backend
     env_file:
       - .env
-    networks:
-      - app-network
-
-# Define a custom network for better container isolation and communication
-networks:
-  app-network:
-    driver: bridge
